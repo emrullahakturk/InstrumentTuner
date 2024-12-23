@@ -17,5 +17,9 @@
         android:name="com.yargisoft.tuner.ui.view.GuitarFragment"
         android:label="GuitarFragment"
         tools:layout="@layout/fragment_guitar" />
+    <fragment
+        android:id="@+id/ukuleleFragment"
+        android:name="com.yargisoft.tuner.ui.view.UkuleleFragment"
+        android:label="UkuleleFragment" />
 
 </navigation>

@@ -9,4 +9,7 @@
     <item
         android:id="@+id/guitarFragment"
         android:icon="@drawable/ic_guitar" />
+    <item
+        android:id="@+id/ukuleleFragment"
+        android:icon="@drawable/ic_ukulele" />
 </menu>

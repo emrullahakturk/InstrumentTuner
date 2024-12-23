@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.mainFragment,
                 R.id.violinFragment,
-                R.id.guitarFragment
+                R.id.guitarFragment,
+                R.id.ukuleleFragment
             ),
             drawerLayout
         )
