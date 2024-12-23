@@ -30,7 +30,12 @@ sealed class InstrumentFrequencyMapper {
 
     class ViolinMapper(private val frequencyToNoteMapper: FrequencyToNoteMapper) : InstrumentFrequencyMapper() {
         override fun mapFrequencyToNoteForInstrument(frequency: Float): String {
-            return frequencyToNoteMapper.mapFrequencyToNote(frequency)
+            val violinNotes = listOf(
+                Pair("G3", 196.0f), Pair("D4", 293.66f), Pair("A4", 440.0f), Pair("E5", 659.26f)
+            )
+            val closestNote = violinNotes.minByOrNull { abs(it.second - frequency) }
+            return closestNote?.first ?: frequencyToNoteMapper.mapFrequencyToNote(frequency)
         }
     }
+
 }
