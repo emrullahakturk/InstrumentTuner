@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt) // Hilt için eklendi
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt) // Dependency Injection için Hilt eklendi
+    alias(libs.plugins.kotlin.kapt) // Kapt (Kotlin Annotation Processing) eklendi
 }
 
 android {
@@ -28,49 +28,55 @@ android {
             )
         }
     }
+
     compileOptions {
+        // Java dil seviyesini ayarla
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
+        // JVM hedefini belirle (uyumlu bir JVM sürümü kullanılmalı)
         jvmTarget = "11"
     }
+
     buildFeatures {
-        dataBinding = true // DataBinding özelliği etkinleştirildi
+        // ViewBinding etkinleştirildi
+        viewBinding = true
     }
 }
 
 dependencies {
-    // AndroidX
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
+    // AndroidX kütüphaneleri
+    implementation(libs.androidx.core.ktx) // Core KTX
+    implementation(libs.androidx.appcompat) // AppCompat
+    implementation(libs.material) // Material Design
+    implementation(libs.androidx.activity) // Activity KTX
+    implementation(libs.androidx.constraintlayout) // ConstraintLayout
 
-    // Navigation Component
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
+    // Navigation Component (Navigasyon işlemleri için)
+    implementation(libs.navigation.fragment.ktx) // Navigation Fragment
+    implementation(libs.navigation.ui.ktx) // Navigation UI
 
     // Hilt (Dependency Injection)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.android) // Hilt Android
+    kapt(libs.hilt.compiler) // Hilt Compiler
 
-    // ViewModel ve LiveData
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
+    // Jetpack ViewModel ve LiveData
+    implementation(libs.lifecycle.viewmodel.ktx) // ViewModel
+    implementation(libs.lifecycle.livedata.ktx) // LiveData
 
-    // Room Database (Gelecekte kullanılabilir)
-    implementation(libs.room.runtime)
-    kapt(libs.room.compiler)
-    implementation(libs.room.ktx)
+    // Room Database (İleri kullanım için)
+    implementation(libs.room.runtime) // Room Runtime
+    kapt(libs.room.compiler) // Room Compiler
+    implementation(libs.room.ktx) // Room KTX
 
-    // Glide (Resim işlemleri için, gerekirse)
-    implementation(libs.glide)
-    kapt(libs.glide.compiler)
+    // Glide (Görseller için, gerekirse)
+    implementation(libs.glide) // Glide kütüphanesi
+    kapt(libs.glide.compiler) // Glide Compiler
 
-    // Test
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Test kütüphaneleri
+    testImplementation(libs.junit) // JUnit
+    androidTestImplementation(libs.androidx.junit) // AndroidX JUnit
+    androidTestImplementation(libs.androidx.espresso.core) // Espresso Core
 }
