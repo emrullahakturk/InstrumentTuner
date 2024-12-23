@@ -58,7 +58,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.mainFragment,
-                R.id.violinFragment
+                R.id.violinFragment,
+                R.id.guitarFragment
             ),
             drawerLayout
         )

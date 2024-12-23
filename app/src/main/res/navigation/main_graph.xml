@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/mainFragment">
 
     <fragment
@@ -11,5 +12,10 @@
         android:id="@+id/violinFragment"
         android:name="com.yargisoft.tuner.ui.view.ViolinFragment"
         android:label="ViolinFragment" />
+    <fragment
+        android:id="@+id/guitarFragment"
+        android:name="com.yargisoft.tuner.ui.view.GuitarFragment"
+        android:label="GuitarFragment"
+        tools:layout="@layout/fragment_guitar" />
 
 </navigation>

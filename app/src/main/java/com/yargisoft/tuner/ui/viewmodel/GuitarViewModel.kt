@@ -3,15 +3,17 @@ package com.yargisoft.tuner.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.yargisoft.tuner.data.constants.InstrumentType
+import com.yargisoft.tuner.domain.repository.InstrumentRepository
 import com.yargisoft.tuner.domain.usecase.FrequencyAnalyzer
-import com.yargisoft.tuner.domain.usecase.FrequencyToNoteMapper
+import com.yargisoft.tuner.domain.usecase.InstrumentFrequencyMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class TunerViewModel @Inject constructor(
+class GuitarViewModel @Inject constructor(
     private val frequencyAnalyzer: FrequencyAnalyzer,
-    private val noteMapper: FrequencyToNoteMapper
+    private val instrumentRepository: InstrumentRepository
 ) : ViewModel() {
 
     private val _currentFrequency = MutableLiveData<Float>()
@@ -20,10 +22,13 @@ class TunerViewModel @Inject constructor(
     private val _currentNote = MutableLiveData<String>()
     val currentNote: LiveData<String> = _currentNote
 
+    private val instrumentMapper: InstrumentFrequencyMapper =
+        instrumentRepository.getInstrumentMapper(InstrumentType.GUITAR)
+
     fun startTuning() {
         frequencyAnalyzer.startRecording { frequency ->
             _currentFrequency.postValue(frequency)
-            _currentNote.postValue(noteMapper.mapFrequencyToNote(frequency))
+            _currentNote.postValue(instrumentMapper.mapFrequencyToNoteForInstrument(frequency))
         }
     }
 

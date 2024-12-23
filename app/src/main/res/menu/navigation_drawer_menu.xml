@@ -2,8 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mainFragment"
-        android:icon="@drawable/ic_guitar" />
+        android:icon="@drawable/ic_home" />
     <item
         android:id="@+id/violinFragment"
         android:icon="@drawable/ic_violin" />
+    <item
+        android:id="@+id/guitarFragment"
+        android:icon="@drawable/ic_guitar" />
 </menu>
